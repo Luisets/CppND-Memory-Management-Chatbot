@@ -32,12 +32,19 @@ ChatBot::ChatBot(std::string filename)
 
 ChatBot::ChatBot(const ChatBot &chatBot)
 {
-    std::cout << "ChatBot Copy Constructor" << std::endl;;
+    std::cout << "ChatBot Copy Constructor" << std::endl;
+    
+    this->_currentNode = chatBot._currentNode;
+    this->_rootNode = chatBot._rootNode;
+    this->_chatLogic = chatBot._chatLogic;
+    this->_image = new wxBitmap();
+    *this->_image = *chatBot._image;
+    
 }
 
 ChatBot::ChatBot(ChatBot &&chatBot)
 {
-    std::cout << "ChatBot Move Constructor" << std::endl;;
+    std::cout << "ChatBot Move Constructor" << std::endl;
     
     this->_currentNode = chatBot._currentNode;
     this->_rootNode = chatBot._rootNode;
@@ -59,7 +66,9 @@ ChatBot &ChatBot::operator=(const ChatBot &chatBot)
     this->_currentNode = chatBot._currentNode;
     this->_rootNode = chatBot._rootNode;
     this->_chatLogic = chatBot._chatLogic;
-    this->_image = chatBot._image;
+    this->_image = new wxBitmap();
+    *this->_image = *chatBot._image;
+    
     return *this;
 }
 
