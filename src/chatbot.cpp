@@ -32,17 +32,27 @@ ChatBot::ChatBot(std::string filename)
 
 ChatBot::ChatBot(const ChatBot &chatBot)
 {
-    std::cout << "ChatBot Copy Constructor";
+    std::cout << "ChatBot Copy Constructor" << std::endl;;
 }
 
 ChatBot::ChatBot(ChatBot &&chatBot)
 {
-    std::cout << "ChatBot Move Constructor";
+    std::cout << "ChatBot Move Constructor" << std::endl;;
+    
+    this->_currentNode = chatBot._currentNode;
+    this->_rootNode = chatBot._rootNode;
+    this->_chatLogic = chatBot._chatLogic;
+    this->_image = chatBot._image;
+
+    chatBot._currentNode = nullptr;
+    chatBot._rootNode = nullptr;
+    chatBot._chatLogic = nullptr;
+    chatBot._image = nullptr;
 }
 
 ChatBot &ChatBot::operator=(const ChatBot &chatBot)
 {
-    std::cout << "ChatBot Copy Assignment";
+    std::cout << "ChatBot Copy Assignment" << std::endl;
     if (this == &chatBot)
             return *this;
 
@@ -55,7 +65,7 @@ ChatBot &ChatBot::operator=(const ChatBot &chatBot)
 
 ChatBot &ChatBot::operator=(ChatBot &&chatBot)
 {
-    std::cout << "ChatBot Move Assignmen";
+    std::cout << "ChatBot Move Assignmen" << std::endl;
     if (this == &chatBot)
             return *this;
 
